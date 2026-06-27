@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jelly Belly Wiki - Feijões</title>
+    <!-- CORREÇÃO 1: Como o style.css está na mesma pasta 'tela' que este HTML, 
+         o caminho deve ser apenas "style.css" (o seu já estava certo!) -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- BARRA DE NAVEGAÇÃO SUPERIOR -->
+    <header class="navbar">
+        <div class="logo">
+            <!-- CORREÇÃO 2: Para achar a pasta 'img', o HTML precisa sair da pasta 'tela' (../) 
+                 e depois entrar na pasta 'img'. Seu caminho está correto: "../img/logo.png" -->
+            <img src="../img/logo.png" alt="Jelly Belly Logo">
+        </div>
+        <nav class="menu">
+            <!-- CORREÇÃO 3: Ajuste dos links para navegar entre as suas pastas reais -->
+            <a href="../tela-inicial/index.html">home</a>
+            <a href="index.html">feijões</a>
+            <a href="#">receitas</a>
+            <a href="#">combinações</a>
+            <a href="#">história</a>
+        </nav>
+    </header>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="catalog-container">
+        
+        <!-- Título Central da Tela -->
+        <h1 class="main-title">Explore todos os tipos de feijão...</h1>
+
+        <!-- Botão Voltar: Aponta para a sua pasta tela-inicial real -->
+        <a href="../tela-inicial/index.html" class="btn-back">voltar</a>
+
+        <!-- AREA DOS CARDS: O JavaScript vai preencher esta div vazia com os dados da API -->
+        <div id="grid-feijoes" class="beans-grid">
+            <p class="loading-text">Carregando os feijões mágicos...</p>
+        </div>
+
+    </main>
+
+    <!-- RODAPÉ (FOOTER) -->
+    <footer class="footer">
+        <img src="../img/cerejaLogo.png" alt="Cerejas" class="footer-icon">
+    </footer>
+
+    <!-- LÓGICA DE INTEGRAÇÃO COM A API PÚBLICA -->
+    <script>
+        // Endpoint público oficial que retorna a lista de feijões (Beans)
+        const URL_API_FEIJOES = "https://jellybellywikiapi.onrender.com/api/Beans";
+
+        async function carregarCatalogoFeijoes() {
+            try {
+                // Faz a requisição para a API na internet
+                const resposta = await fetch(URL_API_FEIJOES);
+                const dados = await resposta.json();
+                
+                // A API da Jelly Belly envelopa a lista de objetos dentro de uma chave chamada 'items'
+                const listaFeijoes = dados.items;
+
+                // Seleciona a div do grid para começarmos a injetar os dados nela
+                const grid = document.getElementById("grid-feijoes");
+                grid.innerHTML = ""; // Remove o texto de "Carregando..."
+
+                // Passa por cada feijão retornado pela API e monta a estrutura HTML dele
+                listaFeijoes.forEach(feijao => {
+                    // Cria uma div para envelopar o cartão individual
+                    const card = document.createElement("div");
+                    card.className = "bean-card"; // Classe mapeada no seu CSS
+
+                    // Monta o HTML interno baseado no seu modelo do Figma
+                    card.innerHTML = `
+                        <h2 class="bean-name">${feijao.name}</h2>
+                        <div class="bean-image-wrapper">
+                            <img src="${feijao.imageUrl}" alt="Feijão sabor ${feijao.name}" class="bean-img">
+                        </div>
+                        <p class="bean-description">${feijao.description || 'Este grão saboroso está pronto para ser descoberto no catálogo Jelly Belly!'}</p>
+                    `;
+
+                    // Adiciona o card estruturado dentro do nosso grid principal da página
+                    grid.appendChild(card);
+                });
+
+            } catch (erro) {
+                console.error("Não foi possível carregar a API Jelly Belly:", erro);
+                document.getElementById("grid-feijoes").innerHTML = `
+                    <p class="error-text">Ops! Tivemos um problema para conectar com o mundo de sabores. Tente novamente mais tarde.</p>
+                `;
+            }
+        }
+
+        // Dispara a função automaticamente assim que a página termina de carregar no navegador
+        carregarCatalogoFeijoes();
+    </script>
+
+</body>
+</html>

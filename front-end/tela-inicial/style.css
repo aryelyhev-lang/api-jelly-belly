@@ -1,0 +1,141 @@
+/* RESET PADRÃO: Limpa margens do navegador */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: #E5E5E5;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* NAVBAR SUPERIOR */
+.navbar {
+    background-color: #FFB3B7;
+    border-bottom: 2px solid #0056B3;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 40px;
+    min-height: 70px;
+}
+
+.navbar .logo img {
+    height: 50px;
+}
+
+.navbar .menu {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.navbar .menu a {
+    text-decoration: none;
+    color: #D62828;
+    font-weight: bold;
+    font-size: 14px;
+    text-transform: lowercase;
+}
+
+/* CONTEÚDO CENTRAL */
+.main-container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 60px;
+    padding: 40px;
+}
+
+.hero-image img {
+    max-width: 450px;
+    width: 100%;
+    height: auto;
+}
+
+.hero-text {
+    max-width: 400px;
+}
+
+.hero-text h1 {
+    color: #D62828;
+    font-size: 42px;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.hero-text p {
+    color: #D62828;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* RODAPÉ */
+.footer {
+    background-color: #FFB3B7;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-icon {
+    height: 25px;
+}
+
+/* ==========================================================================
+   RESPONSIVIDADE (MEDIA QUERIES)
+   ========================================================================== */
+
+/* 📱 DISPOSITIVOS MÉDIOS E PEQUENOS (Tablets e Celulares Grandes - até 900px) */
+@media (max-width: 900px) {
+    .main-container {
+        flex-direction: column; /* Joga o texto para baixo da imagem */
+        gap: 30px;
+        text-align: center; /* Centraliza os textos na tela */
+        padding: 30px 20px;
+    }
+
+    .hero-image img {
+        max-width: 350px; /* Reduz levemente a imagem no tablet */
+    }
+
+    .hero-text h1 {
+        font-size: 34px; /* Diminui o título para não quebrar muitas linhas */
+    }
+}
+
+/* 📱 DISPOSITIVOS MUITO PEQUENOS (Celulares - até 600px) */
+@media (max-width: 600px) {
+    .navbar {
+        flex-direction: column; /* Logo fica em cima e menu embaixo */
+        padding: 15px 10px;
+        gap: 15px;
+    }
+
+    .navbar .menu {
+        justify-content: center; /* Centraliza os links do menu no celular */
+        gap: 15px;
+    }
+
+    .navbar .menu a {
+        font-size: 13px; /* Diminui levemente a fonte do menu */
+    }
+
+    .hero-image img {
+        max-width: 280px; /* Ajusta o tamanho do feijão para telas de celular */
+    }
+
+    .hero-text h1 {
+        font-size: 28px;
+    }
+    
+    .hero-text p {
+        font-size: 14px;
+    }
+}
