@@ -15,33 +15,53 @@ body {
     flex-direction: column;
 }
 
-/* NAVBAR SUPERIOR */
+/* ==========================================================================
+   NAVBAR SUPERIOR (CORRIGIDA IGUAL AO FIGMA)
+   ========================================================================== */
 .navbar {
-    background-color: #E3E3E3; 
+    background-color: #FFCCD0; /* Cor rosa claro do topo do seu Figma */
     border-bottom: 2px solid #FF5A60; 
     display: flex;
-    justify-content: space-between;
     align-items: center;
     padding: 10px 40px;
     min-height: 70px;
+    position: relative; /* Permite que o menu se alinhe perfeitamente ao centro da barra */
+}
+
+.navbar .logo {
+    display: flex;
+    align-items: center;
+    z-index: 2; /* Garante que a logo fique por cima se a tela encolher */
 }
 
 .navbar .logo img {
-    height: 50px;
+    height: 45px; /* Tamanho proporcional da logo */
 }
 
+/* O MENU FICA CENTRALIZADO NO MEIO EXATO DA TELA */
 .navbar .menu {
     display: flex;
-    gap: 20px;
+    gap: 40px; /* Espaçamento elegante entre os links */
+    
+    /* TRUQUE DO FIGMA: Centralização absoluta horizontal em relação à barra inteira */
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .navbar .menu a {
     text-decoration: none;
-    color: #D62828;
+    color: #D62828; /* Vermelho Jelly Belly dos links */
     font-weight: bold;
     font-size: 14px;
-    text-transform: lowercase;
+    text-transform: lowercase; /* Mantém tudo em minúsculo igual ao protótipo */
+    transition: color 0.2s ease;
 }
+
+.navbar .menu a:hover {
+    color: #FF2E3B; /* Efeito visual ao passar o mouse */
+}
+
 
 /* RODAPÉ */
 .footer {

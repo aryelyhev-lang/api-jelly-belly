@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela de receitas</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- BARRA DE NAVEGAÇÃO SUPERIOR -->
+    <header class="navbar">
+        <div class="logo">
+            <img src="../img/logo.png" alt="Jelly Belly Logo">
+        </div>
+        <nav class="menu">
+            <!--ajustando endereço de direcionamento de cada botão-->
+            <a href="../tela-inicial/index.html">home</a>
+            <a href="../tela-principal/index.html">feijões</a>
+            <a href="#">combinações</a>
+            <a href="#">história</a>
+        </nav>
+    </header>
+    
+    <!--CONTEUDO PRINCIPAL-->
+    <main class="conteiner-receitas">
+    
+         <!-- Título Central da Tela -->
+        <h1 class="titulo">Explore as receitas</h1>
+
+        <!-- Botão Voltar: Aponta para a sua pasta tela-inicial real -->
+        <a href="../tela-inicial/index.html" class="btn-back">voltar</a>
+
+        <!-- AREA DOS CARDS: O JavaScript vai preencher esta div vazia com os dados da API -->
+        <div id="grid-feijoes" class="beans-grid">
+            <p class="loading-text">Carregando as receitas...</p>
+        </div>
+
+
+    </main>
+</body>
+</html>

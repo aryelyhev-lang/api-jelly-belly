@@ -4,8 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jelly Belly Wiki - Feijões</title>
-    <!-- CORREÇÃO 1: Como o style.css está na mesma pasta 'tela' que este HTML, 
-         o caminho deve ser apenas "style.css" (o seu já estava certo!) -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -13,15 +11,11 @@
     <!-- BARRA DE NAVEGAÇÃO SUPERIOR -->
     <header class="navbar">
         <div class="logo">
-            <!-- CORREÇÃO 2: Para achar a pasta 'img', o HTML precisa sair da pasta 'tela' (../) 
-                 e depois entrar na pasta 'img'. Seu caminho está correto: "../img/logo.png" -->
             <img src="../img/logo.png" alt="Jelly Belly Logo">
         </div>
         <nav class="menu">
-            <!-- CORREÇÃO 3: Ajuste dos links para navegar entre as suas pastas reais -->
             <a href="../tela-inicial/index.html">home</a>
-            <a href="index.html">feijões</a>
-            <a href="#">receitas</a>
+            <a href="../tela-receitas/index.html">receitas</a>
             <a href="#">combinações</a>
             <a href="#">história</a>
         </nav>

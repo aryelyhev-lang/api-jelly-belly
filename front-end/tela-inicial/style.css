@@ -13,25 +13,36 @@ body {
     flex-direction: column;
 }
 
-/* NAVBAR SUPERIOR */
+/* NAVBAR SUPERIOR (CORRIGIDA E CENTRALIZADA) */
 .navbar {
-    background-color: #FFB3B7;
-    border-bottom: 2px solid #0056B3;
+    background-color: #FFB3B7; /* Rosa do topo original da sua Home */
+    border-bottom: 2px solid #0056B3; /* Mantém a sua borda azul da Home */
     display: flex;
-    justify-content: space-between;
     align-items: center;
     padding: 10px 40px;
     min-height: 70px;
+    position: relative; /* Permite a centralização absoluta do menu */
+}
+
+.navbar .logo {
+    display: flex;
+    align-items: center;
+    z-index: 2; /* Mantém a logo visível em cima se a tela encolher */
 }
 
 .navbar .logo img {
     height: 50px;
 }
 
+/* O MENU FICA CENTRALIZADO NO MEIO EXATO DA TELA INICIAL */
 .navbar .menu {
     display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
+    gap: 40px; /* Espaçamento elegante entre os links igual ao catálogo */
+    
+    /* TRUQUE DO FIGMA: Força os links para o centro real da tela */
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .navbar .menu a {
@@ -40,6 +51,11 @@ body {
     font-weight: bold;
     font-size: 14px;
     text-transform: lowercase;
+    transition: color 0.2s ease;
+}
+
+.navbar .menu a:hover {
+    color: #FF2E3B; /* Feedback visual opcional ao passar o mouse */
 }
 
 /* CONTEÚDO CENTRAL */
